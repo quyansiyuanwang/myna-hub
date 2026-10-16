@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "daily-report",
+      "name": "日报生成",
+      "description": "汇总今天的提醒与日程，生成一段日报文本",
+      "tags": ["productivity", "summary"],
+      "author": "quyansiyuanwang",
+      "path": "skills/daily-report"
+    },
+    {
+      "id": "file-tidy",
+      "name": "下载目录整理",
+      "description": "整理下载目录，按文件类型归类到子文件夹并汇报结果",
+      "tags": ["utility", "files"],
+      "author": "quyansiyuanwang",
+      "path": "skills/file-tidy"
+    },
+    {
+      "id": "focus-mode",
+      "name": "专注模式",
+      "description": "专注模式，退出干扰类应用、开启勿扰并静音",
+      "tags": ["productivity", "focus"],
+      "author": "quyansiyuanwang",
+      "path": "skills/focus-mode"
+    },
+    {
+      "id": "meeting-notes",
+      "name": "会议纪要整理",
+      "description": "把剪贴板里的会议记录整理成纪要，包含结论、待办与负责人",
+      "tags": ["productivity", "notes"],
+      "author": "quyansiyuanwang",
+      "path": "skills/meeting-notes"
+    },
+    {
+      "id": "morning-brief",
+      "name": "早间简报",
+      "description": "早间简报，汇总天气、今天的日程与未完成的提醒",
+      "tags": ["productivity", "weather", "calendar"],
+      "author": "quyansiyuanwang",
+      "path": "skills/morning-brief"
+    },
+    {
+      "id": "translate-clipboard",
+      "name": "剪贴板翻译",
+      "description": "读取剪贴板内容并翻译，然后把译文写回剪贴板",
+      "tags": ["utility", "translation"],
+      "author": "quyansiyuanwang",
+      "path": "skills/translate-clipboard"
+    }
+  ]
+}
