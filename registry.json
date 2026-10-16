@@ -49,5 +49,53 @@
       "author": "quyansiyuanwang",
       "path": "skills/translate-clipboard"
     }
+  ],
+  "mcps": [
+    {
+      "id": "everything",
+      "name": "Everything 参考服务器",
+      "description": "官方参考服务器，演示 MCP 协议的全部能力（回显、加法、长任务等）",
+      "tags": ["developer", "reference"],
+      "author": "quyansiyuanwang",
+      "path": "mcps/everything"
+    },
+    {
+      "id": "filesystem",
+      "name": "文件系统",
+      "description": "读写指定目录下的文件（只读/读写取决于参数）",
+      "tags": ["files", "filesystem"],
+      "author": "quyansiyuanwang",
+      "path": "mcps/filesystem"
+    },
+    {
+      "id": "memory",
+      "name": "记忆图谱",
+      "description": "基于知识图谱的持久化记忆，保存与检索实体、关系与观察",
+      "tags": ["memory", "knowledge-graph"],
+      "author": "quyansiyuanwang",
+      "path": "mcps/memory"
+    }
+  ],
+  "plugins": [
+    {
+      "id": "desk-cleanup",
+      "name": "桌面清理",
+      "description": "组合下载目录整理与文件系统 MCP，归类文件并汇报结果",
+      "tags": ["utility", "files"],
+      "author": "quyansiyuanwang",
+      "path": "plugins/desk-cleanup",
+      "skills": ["file-tidy"],
+      "mcps": ["filesystem"]
+    },
+    {
+      "id": "morning-routine",
+      "name": "早晨例程",
+      "description": "组合早间简报与记忆图谱，生成简报并记录当天要点",
+      "tags": ["productivity", "routine"],
+      "author": "quyansiyuanwang",
+      "path": "plugins/morning-routine",
+      "skills": ["morning-brief"],
+      "mcps": ["memory"]
+    }
   ]
 }

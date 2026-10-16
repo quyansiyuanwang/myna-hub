@@ -1,0 +1,7 @@
+{
+  "id": "desk-cleanup",
+  "name": "桌面清理",
+  "description": "组合下载目录整理与文件系统 MCP，归类文件并汇报结果",
+  "skills": ["file-tidy"],
+  "mcps": ["filesystem"]
+}

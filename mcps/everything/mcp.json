@@ -1,0 +1,8 @@
+{
+  "id": "everything",
+  "name": "Everything 参考服务器",
+  "description": "官方参考服务器，演示 MCP 协议的全部能力（回显、加法、长任务等）",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-everything"],
+  "env": {}
+}

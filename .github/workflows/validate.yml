@@ -1,4 +1,4 @@
-name: Validate skills
+name: Validate hub
 
 on:
   push:
@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Validate registry and skills
+      - name: Validate registry, skills, MCP servers and plugins
         run: node scripts/validate.mjs
