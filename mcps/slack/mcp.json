@@ -1,0 +1,14 @@
+{
+  "id": "slack",
+  "name": "Slack",
+  "description": "读取频道历史、发送消息",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-slack"
+  ],
+  "env": {
+    "SLACK_BOT_TOKEN": "",
+    "SLACK_TEAM_ID": ""
+  }
+}

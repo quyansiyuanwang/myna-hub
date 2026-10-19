@@ -1,0 +1,10 @@
+{
+  "id": "time",
+  "name": "时间与时区",
+  "description": "获取当前时间、换算时区、做时间加减",
+  "command": "uvx",
+  "args": [
+    "mcp-server-time"
+  ],
+  "env": {}
+}

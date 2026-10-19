@@ -1,0 +1,13 @@
+{
+  "id": "gitlab",
+  "name": "GitLab",
+  "description": "访问 GitLab 项目、Issue 与合并请求",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-gitlab"
+  ],
+  "env": {
+    "GITLAB_PERSONAL_ACCESS_TOKEN": ""
+  }
+}

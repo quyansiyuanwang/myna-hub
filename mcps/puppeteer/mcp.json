@@ -1,0 +1,11 @@
+{
+  "id": "puppeteer",
+  "name": "浏览器自动化",
+  "description": "用无头浏览器打开页面、点击、截图与提取内容",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-puppeteer"
+  ],
+  "env": {}
+}

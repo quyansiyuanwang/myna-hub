@@ -1,0 +1,10 @@
+{
+  "id": "duckduckgo",
+  "name": "DuckDuckGo 搜索",
+  "description": "免 API Key 的网页搜索与结果解析，适合零配置起步",
+  "command": "uvx",
+  "args": [
+    "duckduckgo-mcp-server"
+  ],
+  "env": {}
+}

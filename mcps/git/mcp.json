@@ -1,0 +1,10 @@
+{
+  "id": "git",
+  "name": "本地 Git 仓库",
+  "description": "查看本地仓库状态、差异、提交历史与分支",
+  "command": "uvx",
+  "args": [
+    "mcp-server-git"
+  ],
+  "env": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "dev-pack",
+  "name": "开发工具包",
+  "description": "代码审查与规范化提交，搭配 GitHub 与本地 Git MCP",
+  "skills": [
+    "code-review",
+    "git-commit",
+    "api-debug"
+  ],
+  "mcps": [
+    "github",
+    "git"
+  ]
+}

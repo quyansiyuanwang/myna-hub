@@ -1,0 +1,12 @@
+{
+  "id": "redis",
+  "name": "Redis",
+  "description": "查看键值、执行只读命令（需在参数中填入连接串）",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-redis",
+    "redis://localhost:6379"
+  ],
+  "env": {}
+}

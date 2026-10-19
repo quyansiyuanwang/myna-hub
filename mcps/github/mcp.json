@@ -1,0 +1,13 @@
+{
+  "id": "github",
+  "name": "GitHub",
+  "description": "读写仓库、Issue 与 Pull Request，查看文件与提交历史",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-github"
+  ],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+  }
+}

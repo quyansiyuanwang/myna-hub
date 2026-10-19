@@ -1,0 +1,13 @@
+{
+  "id": "brave-search",
+  "name": "Brave 搜索",
+  "description": "通过 Brave Search API 联网搜索网页、新闻与图片，返回标题、链接与摘要",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-brave-search"
+  ],
+  "env": {
+    "BRAVE_API_KEY": ""
+  }
+}

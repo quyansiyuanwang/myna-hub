@@ -1,0 +1,13 @@
+{
+  "id": "tavily",
+  "name": "Tavily 搜索",
+  "description": "面向大模型优化的联网搜索，可返回结构化结果与综合答案",
+  "command": "npx",
+  "args": [
+    "-y",
+    "tavily-mcp"
+  ],
+  "env": {
+    "TAVILY_API_KEY": ""
+  }
+}

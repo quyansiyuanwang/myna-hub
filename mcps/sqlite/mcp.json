@@ -1,0 +1,12 @@
+{
+  "id": "sqlite",
+  "name": "SQLite 数据库",
+  "description": "查询本地 SQLite 数据库：列出表结构、执行只读 SQL",
+  "command": "uvx",
+  "args": [
+    "mcp-server-sqlite",
+    "--db-path",
+    "~/data.db"
+  ],
+  "env": {}
+}

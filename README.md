@@ -11,6 +11,35 @@ menu bar AI assistant. It manages three kinds of contributions in separate folde
 
 `registry.json` is the index the app reads.
 
+## What's available
+
+| Kind | Count | Highlights |
+|---|---|---|
+| Skills | 12 | `web-research`, `code-review`, `git-commit`, `summarize-url`, `weekly-review`, `api-debug` |
+| MCP servers | 17 | Web search (`brave-search`, `tavily`, `duckduckgo`), page fetching (`fetch`), reasoning (`sequential-thinking`), developer tools (`github`, `gitlab`, `git`, `sqlite`, `postgres`, `redis`, `puppeteer`), plus `filesystem`, `memory`, `everything`, `time`, `slack` |
+| Plugins | 5 | `research-pack` (search + fetch), `dev-pack` (review + git), `knowledge-pack` (memory + sqlite), `desk-cleanup`, `morning-routine` |
+
+### Web search
+
+Myna also has built-in web search (Settings → Tools → Web search). The hub's search
+MCP servers are an alternative that exposes search as MCP tools:
+
+| Server | Requires | Notes |
+|---|---|---|
+| `duckduckgo` | nothing | Zero-config starting point |
+| `fetch` | nothing | Fetches pages as Markdown for the model to read |
+| `brave-search` | `BRAVE_API_KEY` | Web, news and image search |
+| `tavily` | `TAVILY_API_KEY` | LLM-optimised results, optional synthesised answer |
+
+Servers that need a key or a connection string ship with an empty `env` value or a
+placeholder argument — fill it in after installing (Settings → Tools → MCP servers).
+
+### Runtimes
+
+MCP servers are started over stdio. `npx`-based servers need Node.js; `uvx`-based
+servers need [uv](https://docs.astral.sh/uv/). The registry entry records which one
+each server uses.
+
 ## Repository layout
 
 ```

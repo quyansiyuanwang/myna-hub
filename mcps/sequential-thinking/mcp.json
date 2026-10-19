@@ -1,0 +1,11 @@
+{
+  "id": "sequential-thinking",
+  "name": "结构化推理",
+  "description": "把复杂问题拆成可回溯的思考步骤，适合规划与多步推理",
+  "command": "npx",
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-sequential-thinking"
+  ],
+  "env": {}
+}

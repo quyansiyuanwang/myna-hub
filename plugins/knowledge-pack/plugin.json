@@ -1,0 +1,12 @@
+{
+  "id": "knowledge-pack",
+  "name": "知识管理包",
+  "description": "周回顾搭配记忆图谱与 SQLite，沉淀长期笔记",
+  "skills": [
+    "weekly-review"
+  ],
+  "mcps": [
+    "memory",
+    "sqlite"
+  ]
+}

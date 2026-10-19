@@ -1,0 +1,10 @@
+{
+  "id": "fetch",
+  "name": "网页抓取",
+  "description": "抓取网页并转为 Markdown，便于模型阅读与总结",
+  "command": "uvx",
+  "args": [
+    "mcp-server-fetch"
+  ],
+  "env": {}
+}
