@@ -9,5 +9,9 @@
   "mcps": [
     "duckduckgo",
     "fetch"
+  ],
+  "tags": [
+    "research",
+    "web"
   ]
 }

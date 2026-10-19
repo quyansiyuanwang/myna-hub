@@ -3,6 +3,14 @@
   "name": "文件系统",
   "description": "读写指定目录下的文件（只读/读写取决于参数）",
   "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/Documents"],
-  "env": {}
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-filesystem",
+    "~/Documents"
+  ],
+  "env": {},
+  "tags": [
+    "files",
+    "filesystem"
+  ]
 }

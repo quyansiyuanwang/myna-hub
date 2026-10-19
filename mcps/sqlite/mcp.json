@@ -8,5 +8,9 @@
     "--db-path",
     "~/data.db"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "developer",
+    "database"
+  ]
 }

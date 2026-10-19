@@ -1,6 +1,7 @@
 ---
 name: 早间简报
 description: 早间简报，汇总天气、今天的日程与未完成的提醒
+tags: productivity, weather, calendar
 ---
 目标：在用户开始一天工作时，用一段话给出天气、日程和待办。按以下步骤执行。
 

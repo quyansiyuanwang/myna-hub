@@ -1,6 +1,7 @@
 ---
 name: 日报生成
 description: 汇总今天的提醒与日程，生成一段日报文本
+tags: productivity, summary
 ---
 目标：把今天的工作情况整理成一段可以直接发送的日报。按以下步骤执行。
 

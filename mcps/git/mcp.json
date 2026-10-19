@@ -6,5 +6,9 @@
   "args": [
     "mcp-server-git"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "developer",
+    "git"
+  ]
 }

@@ -1,6 +1,7 @@
 ---
 name: 代码审查
 description: 对指定文件或改动做结构化代码审查
+tags: developer, review
 ---
 目标：对用户指定的文件、目录或 diff 做一次结构化代码审查。
 

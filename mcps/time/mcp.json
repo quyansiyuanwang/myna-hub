@@ -6,5 +6,9 @@
   "args": [
     "mcp-server-time"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "utility",
+    "time"
+  ]
 }

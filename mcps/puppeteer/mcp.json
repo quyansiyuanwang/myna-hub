@@ -7,5 +7,9 @@
     "-y",
     "@modelcontextprotocol/server-puppeteer"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "automation",
+    "browser"
+  ]
 }

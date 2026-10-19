@@ -3,6 +3,13 @@
   "name": "记忆图谱",
   "description": "基于知识图谱的持久化记忆，保存与检索实体、关系与观察",
   "command": "npx",
-  "args": ["-y", "@modelcontextprotocol/server-memory"],
-  "env": {}
+  "args": [
+    "-y",
+    "@modelcontextprotocol/server-memory"
+  ],
+  "env": {},
+  "tags": [
+    "memory",
+    "knowledge-graph"
+  ]
 }

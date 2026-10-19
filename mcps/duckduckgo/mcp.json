@@ -6,5 +6,10 @@
   "args": [
     "duckduckgo-mcp-server"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "search",
+    "web",
+    "free"
+  ]
 }

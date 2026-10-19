@@ -139,6 +139,7 @@ async function loadSkills() {
       continue;
     }
     const { data, body } = parseFrontmatter(await readFile(skillFile, "utf8"), rel);
+    const tags = parseTags(data.tags);
     const nameOk = validateFrontmatterField(id, "name", data.name);
     const descOk = validateFrontmatterField(id, "description", data.description);
     if (body.trim() === "") {
@@ -149,6 +150,7 @@ async function loadSkills() {
       id,
       name: data.name,
       description: data.description,
+      tags,
       path: `skills/${id}`,
     });
   }
@@ -158,6 +160,25 @@ async function loadSkills() {
 // ---------------------------------------------------------------------------
 // MCP servers
 // ---------------------------------------------------------------------------
+
+// 标签来源：frontmatter 里的 "a, b" 或 "[a, b]"，以及 JSON 里的字符串数组。
+function parseTags(raw, file = "") {
+  if (raw === undefined || raw === null || raw === "") return [];
+  if (Array.isArray(raw)) {
+    const bad = raw.some((t) => typeof t !== "string" || t.trim() === "");
+    if (bad) {
+      if (file) fail(`${file}: "tags" must be an array of non-empty strings`);
+      return [];
+    }
+    return raw.map((t) => t.trim());
+  }
+  if (typeof raw === "string") {
+    const text = raw.trim().replace(/^\[|\]$/g, "");
+    return text.split(",").map((t) => t.trim()).filter((t) => t !== "");
+  }
+  if (file) fail(`${file}: "tags" must be a string or an array of strings`);
+  return [];
+}
 
 function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -195,11 +216,13 @@ async function loadMcps() {
       fail(`${rel}: "env" must be an object`);
       ok = false;
     }
+    const tags = parseTags(data.tags, rel);
     if (!ok) continue;
     mcps.push({
       id,
       name: data.name,
       description: data.description,
+      tags,
       path: `mcps/${id}`,
     });
   }
@@ -251,10 +274,12 @@ async function loadPlugins() {
       ok = false;
     }
     if (!ok) continue;
+    const tags = parseTags(data.tags, rel);
     plugins.push({
       id,
       name: data.name,
       description: data.description,
+      tags,
       path: `plugins/${id}`,
       skills: data.skills,
       mcps: data.mcps,
@@ -415,8 +440,9 @@ async function writeRegistry({ skills, mcps, plugins }) {
         .map((e) => [e.id, e]),
     );
   };
-  const meta = (old) => ({
-    tags: Array.isArray(old.tags) ? old.tags : [],
+  // 标签优先取各文件自身的声明；未声明时沿用旧注册表的值，避免历史标签丢失。
+  const meta = (old, derived) => ({
+    tags: derived.length > 0 ? derived : (Array.isArray(old.tags) ? old.tags : []),
     author: typeof old.author === "string" ? old.author : "quyansiyuanwang",
   });
 
@@ -426,11 +452,11 @@ async function writeRegistry({ skills, mcps, plugins }) {
 
   const skillEntries = skills.map((item) => {
     const old = prevSkills.get(item.id) ?? {};
-    return { id: item.id, name: item.name, description: item.description, ...meta(old), path: item.path };
+    return { id: item.id, name: item.name, description: item.description, ...meta(old, item.tags), path: item.path };
   });
   const mcpEntries = mcps.map((item) => {
     const old = prevMcps.get(item.id) ?? {};
-    return { id: item.id, name: item.name, description: item.description, ...meta(old), path: item.path };
+    return { id: item.id, name: item.name, description: item.description, ...meta(old, item.tags), path: item.path };
   });
   const pluginEntries = plugins.map((item) => {
     const old = prevPlugins.get(item.id) ?? {};
@@ -438,7 +464,7 @@ async function writeRegistry({ skills, mcps, plugins }) {
       id: item.id,
       name: item.name,
       description: item.description,
-      ...meta(old),
+      ...meta(old, item.tags),
       path: item.path,
       skills: item.skills,
       mcps: item.mcps,

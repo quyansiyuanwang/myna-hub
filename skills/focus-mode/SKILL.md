@@ -1,6 +1,7 @@
 ---
 name: 专注模式
 description: 专注模式，退出干扰类应用、开启勿扰并静音
+tags: productivity, focus
 ---
 目标：为用户进入一段不被打扰的专注工作状态。按以下步骤执行。
 

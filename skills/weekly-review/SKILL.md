@@ -1,6 +1,7 @@
 ---
 name: 周回顾
 description: 汇总本周日程与提醒，生成周回顾
+tags: productivity, summary
 ---
 目标：汇总本周的日程与未完成事项，生成一份周回顾。
 

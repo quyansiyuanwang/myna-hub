@@ -2,6 +2,14 @@
   "id": "morning-routine",
   "name": "早晨例程",
   "description": "组合早间简报与记忆图谱，生成简报并记录当天要点",
-  "skills": ["morning-brief"],
-  "mcps": ["memory"]
+  "skills": [
+    "morning-brief"
+  ],
+  "mcps": [
+    "memory"
+  ],
+  "tags": [
+    "productivity",
+    "routine"
+  ]
 }

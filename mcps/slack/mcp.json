@@ -10,5 +10,8 @@
   "env": {
     "SLACK_BOT_TOKEN": "",
     "SLACK_TEAM_ID": ""
-  }
+  },
+  "tags": [
+    "communication"
+  ]
 }

@@ -9,5 +9,9 @@
   ],
   "env": {
     "GITHUB_PERSONAL_ACCESS_TOKEN": ""
-  }
+  },
+  "tags": [
+    "developer",
+    "git"
+  ]
 }

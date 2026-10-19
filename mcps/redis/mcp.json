@@ -8,5 +8,9 @@
     "@modelcontextprotocol/server-redis",
     "redis://localhost:6379"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "developer",
+    "database"
+  ]
 }

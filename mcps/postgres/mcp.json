@@ -8,5 +8,9 @@
     "@modelcontextprotocol/server-postgres",
     "postgresql://user:pass@localhost/db"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "developer",
+    "database"
+  ]
 }

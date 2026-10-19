@@ -10,5 +10,9 @@
   "mcps": [
     "github",
     "git"
+  ],
+  "tags": [
+    "developer",
+    "git"
   ]
 }

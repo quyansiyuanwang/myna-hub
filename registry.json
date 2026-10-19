@@ -5,7 +5,10 @@
       "id": "api-debug",
       "name": "接口调试",
       "description": "用命令行调试 HTTP 接口并分析响应",
-      "tags": [],
+      "tags": [
+        "developer",
+        "debug"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/api-debug"
     },
@@ -13,7 +16,10 @@
       "id": "code-review",
       "name": "代码审查",
       "description": "对指定文件或改动做结构化代码审查",
-      "tags": [],
+      "tags": [
+        "developer",
+        "review"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/code-review"
     },
@@ -54,7 +60,10 @@
       "id": "git-commit",
       "name": "规范化提交",
       "description": "根据当前改动生成并创建规范化提交",
-      "tags": [],
+      "tags": [
+        "developer",
+        "git"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/git-commit"
     },
@@ -85,7 +94,10 @@
       "id": "summarize-url",
       "name": "网页总结",
       "description": "抓取网页并输出结构化总结",
-      "tags": [],
+      "tags": [
+        "research",
+        "web"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/summarize-url"
     },
@@ -104,7 +116,10 @@
       "id": "web-research",
       "name": "联网调研",
       "description": "对指定主题做联网调研，输出带来源链接的结论",
-      "tags": [],
+      "tags": [
+        "research",
+        "web"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/web-research"
     },
@@ -112,7 +127,10 @@
       "id": "weekly-review",
       "name": "周回顾",
       "description": "汇总本周日程与提醒，生成周回顾",
-      "tags": [],
+      "tags": [
+        "productivity",
+        "summary"
+      ],
       "author": "quyansiyuanwang",
       "path": "skills/weekly-review"
     }
@@ -122,7 +140,10 @@
       "id": "brave-search",
       "name": "Brave 搜索",
       "description": "通过 Brave Search API 联网搜索网页、新闻与图片，返回标题、链接与摘要",
-      "tags": [],
+      "tags": [
+        "search",
+        "web"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/brave-search"
     },
@@ -130,7 +151,11 @@
       "id": "duckduckgo",
       "name": "DuckDuckGo 搜索",
       "description": "免 API Key 的网页搜索与结果解析，适合零配置起步",
-      "tags": [],
+      "tags": [
+        "search",
+        "web",
+        "free"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/duckduckgo"
     },
@@ -149,7 +174,11 @@
       "id": "fetch",
       "name": "网页抓取",
       "description": "抓取网页并转为 Markdown，便于模型阅读与总结",
-      "tags": [],
+      "tags": [
+        "search",
+        "web",
+        "reader"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/fetch"
     },
@@ -168,7 +197,10 @@
       "id": "git",
       "name": "本地 Git 仓库",
       "description": "查看本地仓库状态、差异、提交历史与分支",
-      "tags": [],
+      "tags": [
+        "developer",
+        "git"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/git"
     },
@@ -176,7 +208,10 @@
       "id": "github",
       "name": "GitHub",
       "description": "读写仓库、Issue 与 Pull Request，查看文件与提交历史",
-      "tags": [],
+      "tags": [
+        "developer",
+        "git"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/github"
     },
@@ -184,7 +219,10 @@
       "id": "gitlab",
       "name": "GitLab",
       "description": "访问 GitLab 项目、Issue 与合并请求",
-      "tags": [],
+      "tags": [
+        "developer",
+        "git"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/gitlab"
     },
@@ -203,7 +241,10 @@
       "id": "postgres",
       "name": "PostgreSQL 数据库",
       "description": "对 PostgreSQL 执行只读查询（需在参数中填入连接串）",
-      "tags": [],
+      "tags": [
+        "developer",
+        "database"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/postgres"
     },
@@ -211,7 +252,10 @@
       "id": "puppeteer",
       "name": "浏览器自动化",
       "description": "用无头浏览器打开页面、点击、截图与提取内容",
-      "tags": [],
+      "tags": [
+        "automation",
+        "browser"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/puppeteer"
     },
@@ -219,7 +263,10 @@
       "id": "redis",
       "name": "Redis",
       "description": "查看键值、执行只读命令（需在参数中填入连接串）",
-      "tags": [],
+      "tags": [
+        "developer",
+        "database"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/redis"
     },
@@ -227,7 +274,10 @@
       "id": "sequential-thinking",
       "name": "结构化推理",
       "description": "把复杂问题拆成可回溯的思考步骤，适合规划与多步推理",
-      "tags": [],
+      "tags": [
+        "reasoning",
+        "planning"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/sequential-thinking"
     },
@@ -235,7 +285,9 @@
       "id": "slack",
       "name": "Slack",
       "description": "读取频道历史、发送消息",
-      "tags": [],
+      "tags": [
+        "communication"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/slack"
     },
@@ -243,7 +295,10 @@
       "id": "sqlite",
       "name": "SQLite 数据库",
       "description": "查询本地 SQLite 数据库：列出表结构、执行只读 SQL",
-      "tags": [],
+      "tags": [
+        "developer",
+        "database"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/sqlite"
     },
@@ -251,7 +306,11 @@
       "id": "tavily",
       "name": "Tavily 搜索",
       "description": "面向大模型优化的联网搜索，可返回结构化结果与综合答案",
-      "tags": [],
+      "tags": [
+        "search",
+        "web",
+        "ai"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/tavily"
     },
@@ -259,7 +318,10 @@
       "id": "time",
       "name": "时间与时区",
       "description": "获取当前时间、换算时区、做时间加减",
-      "tags": [],
+      "tags": [
+        "utility",
+        "time"
+      ],
       "author": "quyansiyuanwang",
       "path": "mcps/time"
     }
@@ -286,7 +348,10 @@
       "id": "dev-pack",
       "name": "开发工具包",
       "description": "代码审查与规范化提交，搭配 GitHub 与本地 Git MCP",
-      "tags": [],
+      "tags": [
+        "developer",
+        "git"
+      ],
       "author": "quyansiyuanwang",
       "path": "plugins/dev-pack",
       "skills": [
@@ -303,7 +368,10 @@
       "id": "knowledge-pack",
       "name": "知识管理包",
       "description": "周回顾搭配记忆图谱与 SQLite，沉淀长期笔记",
-      "tags": [],
+      "tags": [
+        "knowledge",
+        "productivity"
+      ],
       "author": "quyansiyuanwang",
       "path": "plugins/knowledge-pack",
       "skills": [
@@ -335,7 +403,10 @@
       "id": "research-pack",
       "name": "调研工具包",
       "description": "联网调研与网页总结，搭配免费搜索与网页抓取 MCP",
-      "tags": [],
+      "tags": [
+        "research",
+        "web"
+      ],
       "author": "quyansiyuanwang",
       "path": "plugins/research-pack",
       "skills": [

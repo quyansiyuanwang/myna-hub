@@ -1,6 +1,7 @@
 ---
 name: 规范化提交
 description: 根据当前改动生成并创建规范化提交
+tags: developer, git
 ---
 目标：根据当前工作区改动生成一条规范化提交并创建它。
 

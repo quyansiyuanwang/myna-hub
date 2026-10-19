@@ -9,5 +9,9 @@
   ],
   "env": {
     "BRAVE_API_KEY": ""
-  }
+  },
+  "tags": [
+    "search",
+    "web"
+  ]
 }

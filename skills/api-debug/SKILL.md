@@ -1,6 +1,7 @@
 ---
 name: 接口调试
 description: 用命令行调试 HTTP 接口并分析响应
+tags: developer, debug
 ---
 目标：帮助用户调试一个 HTTP 接口。
 

@@ -1,6 +1,7 @@
 ---
 name: 网页总结
 description: 抓取网页并输出结构化总结
+tags: research, web
 ---
 目标：抓取用户给出的网页并输出结构化总结。
 

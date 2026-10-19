@@ -6,5 +6,10 @@
   "args": [
     "mcp-server-fetch"
   ],
-  "env": {}
+  "env": {},
+  "tags": [
+    "search",
+    "web",
+    "reader"
+  ]
 }

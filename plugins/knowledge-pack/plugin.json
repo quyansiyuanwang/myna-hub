@@ -8,5 +8,9 @@
   "mcps": [
     "memory",
     "sqlite"
+  ],
+  "tags": [
+    "knowledge",
+    "productivity"
   ]
 }

@@ -9,5 +9,10 @@
   ],
   "env": {
     "TAVILY_API_KEY": ""
-  }
+  },
+  "tags": [
+    "search",
+    "web",
+    "ai"
+  ]
 }

@@ -1,6 +1,7 @@
 ---
 name: 剪贴板翻译
 description: 读取剪贴板内容并翻译，然后把译文写回剪贴板
+tags: utility, translation
 ---
 目标：把剪贴板中的文本翻译成目标语言并写回剪贴板。按以下步骤执行。
 
