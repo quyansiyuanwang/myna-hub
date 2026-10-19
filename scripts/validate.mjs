@@ -161,6 +161,14 @@ async function loadSkills() {
 // MCP servers
 // ---------------------------------------------------------------------------
 
+// MCP 启动命令所需的外部运行时（供客户端提前提示，避免装完才发现命令不存在）。
+function inferRuntime(command) {
+  const name = String(command).split("/").pop().toLowerCase();
+  if (["npx", "node", "npm", "pnpm", "yarn", "bun", "bunx", "deno"].includes(name)) return "node";
+  if (["uvx", "uv", "python", "python3", "pipx"].includes(name)) return "uv";
+  return "none";
+}
+
 // 标签来源：frontmatter 里的 "a, b" 或 "[a, b]"，以及 JSON 里的字符串数组。
 function parseTags(raw, file = "") {
   if (raw === undefined || raw === null || raw === "") return [];
@@ -223,6 +231,7 @@ async function loadMcps() {
       name: data.name,
       description: data.description,
       tags,
+      runtime: inferRuntime(data.command),
       path: `mcps/${id}`,
     });
   }
@@ -456,7 +465,8 @@ async function writeRegistry({ skills, mcps, plugins }) {
   });
   const mcpEntries = mcps.map((item) => {
     const old = prevMcps.get(item.id) ?? {};
-    return { id: item.id, name: item.name, description: item.description, ...meta(old, item.tags), path: item.path };
+    return { id: item.id, name: item.name, description: item.description, ...meta(old, item.tags),
+             runtime: item.runtime, path: item.path };
   });
   const pluginEntries = plugins.map((item) => {
     const old = prevPlugins.get(item.id) ?? {};

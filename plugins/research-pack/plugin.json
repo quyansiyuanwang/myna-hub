@@ -1,17 +1,15 @@
 {
   "id": "research-pack",
   "name": "调研工具包",
-  "description": "联网调研与网页总结，搭配免费搜索与网页抓取 MCP",
+  "description": "联网调研与网页总结（使用 Myna 内建的搜索与抓取，无需外部运行时）",
   "skills": [
     "web-research",
     "summarize-url"
   ],
-  "mcps": [
-    "duckduckgo",
-    "fetch"
-  ],
+  "mcps": [],
   "tags": [
     "research",
-    "web"
+    "web",
+    "native"
   ]
 }

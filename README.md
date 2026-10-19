@@ -34,6 +34,27 @@ MCP servers are an alternative that exposes search as MCP tools:
 Servers that need a key or a connection string ship with an empty `env` value or a
 placeholder argument — fill it in after installing (Settings → Tools → MCP servers).
 
+### Runtime weight
+
+**Every MCP server needs an external runtime** — there is no zero-dependency MCP
+server, because MCP servers are separate processes. `npx`-based entries need Node.js;
+`uvx`-based entries need uv. The registry records the required runtime per entry
+(`"runtime": "node" | "uv"`), and Myna shows a warning badge when it is not installed.
+
+Myna's own capabilities are native Swift and need **no** runtime, so the common cases
+are already covered without installing anything:
+
+| Need | Built into Myna |
+|---|---|
+| Web search | Settings → Tools → Web search (Tavily / Brave / Serper / custom) |
+| Page fetching | `fetch_url` tool |
+| Files | `read_file`, `write_file`, `edit_file`, `list_dir`, `find_files`, `search_text` |
+| Git | `git_status`, `git_diff`, `git_log`, `git_commit` |
+| Shell | `run_command` (with a timeout and an optional confirmation gate) |
+
+The marketplace marks these MCP servers as 已内建 (already built in) so they are not
+installed by mistake.
+
 ### Runtimes
 
 MCP servers are started over stdio. `npx`-based servers need Node.js; `uvx`-based
