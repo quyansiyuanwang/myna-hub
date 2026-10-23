@@ -145,7 +145,7 @@ function printHuman(report) {
   }
 }
 
-function printDelta(result) {
+function printDelta(result, after) {
   const lines = [];
   for (const kind of KINDS) {
     for (const id of result.added[kind]) lines.push(`  + ${kind.slice(0, -1)}:${id}`);
@@ -190,16 +190,20 @@ async function main() {
       return;
     }
     const result = delta(base, registry);
-    printDelta(result);
+    printDelta(result, registry);
+    const changes = KINDS.flatMap((kind) =>
+      [...result.added[kind].map((id) => `- 新增 ${kind.slice(0, -1)} \`${id}\``),
+       ...result.removed[kind].map((id) => `- 移除 ${kind.slice(0, -1)} \`${id}\``)]);
+    const sign = result.prompt.tokens >= 0 ? "+" : "";
     const markdown = [
       "## 市场条目变化",
       "",
-      ...KINDS.flatMap((kind) =>
-        [...result.added[kind].map((id) => `- 新增 ${kind.slice(0, -1)} \`${id}\``),
-         ...result.removed[kind].map((id) => `- 移除 ${kind.slice(0, -1)} \`${id}\``)]),
+      ...(changes.length > 0 ? changes : ["无条目变化。"]),
       "",
-      `系统提示词成本变化：${result.prompt.tokens >= 0 ? "+" : ""}${result.prompt.tokens} tokens` +
-        `（${result.prompt.chars >= 0 ? "+" : ""}${result.prompt.chars} 字符）`,
+      `| 指标 | 当前 | 变化 |`,
+      `| --- | --- | --- |`,
+      `| 条目总数 | ${registry.skills.length + registry.mcps.length + registry.plugins.length} | ${changes.length > 0 ? `${changes.length} 项调整` : "无"} |`,
+      `| 系统提示词 | ${promptCost(registry).tokens} tokens | ${sign}${result.prompt.tokens} tokens（${sign}${result.prompt.chars} 字符） |`,
       "",
     ].join("\n");
     console.log("");
