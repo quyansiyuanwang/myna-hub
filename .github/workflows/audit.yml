@@ -1,0 +1,68 @@
+name: Weekly audit
+
+on:
+  schedule:
+    - cron: "0 1 * * 1" # 每周一 01:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: audit
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # 告警在合并时只是提示，长期积累的告警由每周审计来暴露。
+      - name: Strict validation
+        id: strict
+        continue-on-error: true
+        run: node scripts/validate.mjs --strict
+
+      # 上游包被改名或下架会让安装静默失败，只有主动探测才能发现。
+      - name: Upstream package availability
+        id: packages
+        continue-on-error: true
+        run: node scripts/audit.mjs
+
+      - name: Inventory snapshot
+        run: node scripts/stats.mjs | tee stats.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hub-stats
+          path: stats.txt
+          retention-days: 30
+
+      - name: Open an issue when the audit fails
+        if: steps.strict.outcome == 'failure' || steps.packages.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STRICT: ${{ steps.strict.outcome }}
+          PACKAGES: ${{ steps.packages.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Weekly audit failed"
+          existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number')
+          body=$(printf '%s\n' \
+            "自动化审计未通过。" \
+            "" \
+            "- 严格校验：${STRICT}" \
+            "- 上游包可用性：${PACKAGES}" \
+            "- 运行记录：${RUN_URL}" \
+            "" \
+            "处理完毕后关闭本 issue，下周审计会重新创建。")
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body" --label audit || gh issue create --title "$title" --body "$body"
+          fi

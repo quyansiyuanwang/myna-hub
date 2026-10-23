@@ -1,0 +1,35 @@
+name: 条目有问题
+description: 某个技能/MCP/插件安装失败或行为异常
+labels: [bug]
+body:
+  - type: input
+    id: item
+    attributes:
+      label: 条目
+      description: 种类与 id，例如 mcp:github、skill:web-research
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 现象
+      options:
+        - 安装失败（下载 404 / 解析失败）
+        - 安装成功但不可用（命令不存在、鉴权失败）
+        - 行为与描述不符
+        - 条目已过时（上游迁移）
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 细节
+      description: Myna 的报错文案、`myna mcp-check` 输出、或复现步骤。**不要贴密钥。**
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Myna 版本
+      description: 设置 → 诊断 里的版本号

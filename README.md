@@ -160,21 +160,50 @@ source of truth: the app does not scan the repository tree.
 | plugin | `desk-cleanup` | 桌面清理 |
 | plugin | `morning-routine` | 早晨例程 |
 
-## Contributing
+## Maintaining the hub
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: fork, add your files under the
-matching folder, run `node scripts/validate.mjs --write-registry`, and open a pull
-request. CI validates every contribution.
+Everything is scripted and dependency-free (Node 20+, no `npm install`):
+
+```sh
+npm run verify                             # registry in sync + strict validation + inventory
+npm run new -- skill my-skill --name 我的技能 --desc 什么时候用它 --tags utility
+npm run remove -- skill my-skill           # refuses while a plugin still references it
+npm run stats                              # counts, tags, runtimes, prompt cost
+npm run stats:diff                         # the same plus what changed vs origin/main
+npm run audit                              # probe every upstream npx/uvx package
+npm run test                               # inject 16 defects, assert each is rejected
+```
+
+`npm run stats` reports the part that decides how expensive the hub is for users: the
+skill list and plugin paragraphs are part of **every** request's system prompt, so the
+sum of names and descriptions is a permanent per-message cost. It also shows the MCP
+runtime split, so it is obvious how much of the hub needs Node or uv.
 
 ## Validation
 
 ```sh
-node scripts/validate.mjs                  # validate everything against registry.json
-node scripts/validate.mjs --write-registry # regenerate registry.json from the folders
+npm run check          # structural + quality validation
+npm run check:strict   # warnings fail (used by the weekly audit)
+npm run registry       # regenerate registry.json from the folders
+npm run registry:check # fail when registry.json is out of date
 ```
 
 The validator checks frontmatter, ids, MCP command/args/env shapes, plugin references,
-and that `registry.json` lists exactly the same ids with matching names and descriptions.
+that `registry.json` matches the folders field for field, and a set of quality rules
+that prevent silent breakage: prompt-cost limits on names and descriptions, scaffold
+placeholder text, machine-specific paths, credential patterns, unresolvable relative
+links, missing plugin READMEs, and repository hygiene. See
+[CONTRIBUTING.md](CONTRIBUTING.md#what-the-validator-checks) for the full list.
+
+## Automation
+
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `validate.yml` | push / PR | validation on Node 20 and 22, validator self-test (16 injected defects), `registry.json` drift, per-PR inventory with prompt-cost delta in the job summary |
+| `audit.yml` | weekly | strict validation, upstream package availability (catches unpublished or renamed `npx`/`uvx` packages), stats artifact, opens an issue on failure |
+
+The registry is also usable from any other source: Myna's marketplace accepts multiple
+hub sources, so forks and mirrors of this repository can be added side by side.
 
 ## License
 

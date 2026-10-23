@@ -2,15 +2,67 @@ name: Validate hub
 
 on:
   push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
+  # 结构与内容质量：任何一项失败都会阻断合并。
   validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["20", "22"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Validate registry, skills, MCP servers and plugins
+        run: node scripts/validate.mjs
+
+  # 校验器本身也要被校验：每个用例注入一处缺陷，确认能被拦下。
+  selftest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Validate registry, skills, MCP servers and plugins
-        run: node scripts/validate.mjs
+      - name: Self-test the validator
+        run: node scripts/selftest.mjs
+
+  # registry.json 是生成物：手改或漏提交都会在这里被发现。
+  registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check registry.json is in sync
+        run: node scripts/validate.mjs --check-registry
+
+  # 条目变化与提示词成本：写进 job summary，评审时不必自己算。
+  inventory:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Diff against the base branch
+        run: node scripts/stats.mjs --diff "origin/${{ github.base_ref }}"

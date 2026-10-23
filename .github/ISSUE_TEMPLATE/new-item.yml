@@ -1,0 +1,48 @@
+name: 新增技能 / MCP / 插件
+description: 提议一个市场条目
+labels: [proposal]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - 技能（skill）
+        - MCP 服务器（mcp）
+        - 插件（plugin，组合已有条目）
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: 名称
+      description: 展示给用户的名称，简短（建议 ≤ 12 个汉字）
+    validations:
+      required: true
+  - type: textarea
+    id: usage
+    attributes:
+      label: 什么时候会用到
+      description: 描述触发场景，而不是实现方式。这段会进入每条请求的系统提示词。
+      placeholder: 例如：需要把一长段英文邮件转成中文摘要时。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 执行步骤（技能）
+      description: 编号步骤，写明会调用哪些工具。MCP/插件可留空。
+  - type: input
+    id: runtime
+    attributes:
+      label: 依赖（MCP）
+      description: 需要 Node（npx）还是 uv（uvx）？是否有内置替代方案？
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 已确认 Myna 内建能力无法直接完成（避免重复造轮子）
+          required: true
+        - label: 不包含任何密钥、个人路径或私有数据
+          required: true

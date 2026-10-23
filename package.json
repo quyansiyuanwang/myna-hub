@@ -1,0 +1,24 @@
+{
+  "name": "myna-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Registry of Myna skills, MCP servers and plugins",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/validate.mjs",
+    "check:strict": "node scripts/validate.mjs --strict",
+    "registry": "node scripts/validate.mjs --write-registry",
+    "registry:check": "node scripts/validate.mjs --check-registry",
+    "stats": "node scripts/stats.mjs",
+    "stats:diff": "node scripts/stats.mjs --diff origin/main",
+    "new": "node scripts/manage.mjs new",
+    "remove": "node scripts/manage.mjs remove",
+    "verify": "node scripts/validate.mjs --check-registry --strict && node scripts/stats.mjs && node scripts/selftest.mjs",
+    "audit": "node scripts/audit.mjs",
+    "audit:offline": "node scripts/audit.mjs --offline",
+    "test": "node scripts/selftest.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
